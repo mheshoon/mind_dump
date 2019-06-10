@@ -1,0 +1,22 @@
+sudo pacaur -Sy redis
+sudo vim /etc/systemd/system/redis.service
+
+$$ 
+[Unit]
+Description=Redis Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/redis-server /etc/redis.conf
+ExecStop=/bin/kill -15 $MAINPID
+PIDFile=/var/run/redis.pid
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+$$
+
+sudo systemctl daemon-reload
+sudo systemctl enable redis.service
+sudo systemctl start redis.service

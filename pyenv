@@ -1,0 +1,13 @@
+curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+pyenv install 3.7.2
+
+vim ~/zshrc
+$$ 
+export PATH="/root/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+$$
+pyenv local 3.7.2
+pyenv virtualenv 3.7.2 venv
+pyenv activate venv

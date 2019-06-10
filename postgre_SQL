@@ -1,0 +1,15 @@
+sudo pacaur -Sy postgresql
+sudo -u postgres -i initdb --locale $LANG -E UTF8 -D /var/lib/postgres/data
+sudo systemctl start postgresql.service
+sudo systemctl enable postgresql.service
+
+sudo -u postgres -i
+$$ createuser --interactive -P
+$$ exit
+
+vim /var/lib/postgres/data/postgresql.conf
+$$ listen_addresses = '*'
+
+sudo systemctl restart postgresql.service
+
+sudo pacaur -Sy postgresql-libs pgadmin4

@@ -1,0 +1,29 @@
+
+if lsmod | grep -q "loop" ; then
+    echo "loop  already is enable"
+else
+    sudo tee /etc/modules-load.d/loop.conf <<< "loop"
+    modprobe loop
+fi
+
+
+
+pacaur -Sy docker
+
+systemctl start docker.service
+systemctl enable docker.service
+docker info
+
+
+if ERROR [Error starting daemon: Error initializing network controller: list bridge addresses failed: no available network] : 
+	-> ip link add name docker0 type bridge
+	-> ip addr add dev docker0 172.17.0.1/16
+
+#groupadd docker
+gpasswd -a XXX docker
+
+
+
+
+
+pacaur -Sy docker-compose

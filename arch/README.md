@@ -1,1 +1,0 @@
-# MH mind_dump

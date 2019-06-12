@@ -1,0 +1,7 @@
+git clone https://aur.archlinux.org/snapd.git
+cd snapd
+makepkg -s
+sudo pacman -U snapd-[TAB]
+sudo systemctl enable snapd
+sudo systemctl start snapd 
+

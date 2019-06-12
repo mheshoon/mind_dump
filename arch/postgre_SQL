@@ -11,5 +11,13 @@ vim /var/lib/postgres/data/postgresql.conf
 $$ listen_addresses = '*'
 
 sudo systemctl restart postgresql.service
-
 sudo pacaur -Sy postgresql-libs pgadmin4
+
+
+
+------------------------------------------------------------------------------------
+					Dump/Load
+------------------------------------------------------------------------------------
+pg_dump -p XXX -h XXX -U XXX -W -F t XXX > XXX.tar
+pg_restore -d USERNAME XXX.tar
+
